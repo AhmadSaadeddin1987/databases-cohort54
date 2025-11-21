@@ -40,10 +40,14 @@ await client.query("DROP TABLE IF EXISTS Invitee;");
 
 // Create tables
 await client.query(`
+CREATE TABLE Inviter (
+    inviter_id SERIAL PRIMARY KEY,
+    inviter_name VARCHAR(50)
+);
 CREATE TABLE Invitee (
     invitee_no SERIAL PRIMARY KEY,
     invitee_name VARCHAR(50),
-    invited_by VARCHAR(50)
+    invited_by INT REFERENCES Inviter(inviter_id)
 );
 `);
 
@@ -69,12 +73,19 @@ console.log("Tables created");
 
 // Insert Invitee rows
 await client.query(`
+INSERT INTO Inviter (inviter_name) VALUES
+('APS-Group'),
+('Sky-Data'),
+('ASML-Team'),
+('DAF-Unit'),
+('PHILIPS-Division');
+
 INSERT INTO Invitee (invitee_name, invited_by) VALUES
-('Ahmad', 'APS-Group'),
-('Fatima', 'Sky-Data'),
-('John', 'ASML-Team'),
-('David', 'DAF-Unit'),
-('Maria', 'PHILIPS-Division');
+('Ahmad', 1),
+('Fatima', 2),
+('John', 3),
+('David', 4),
+('Maria', 5);
 `);
 
 // Insert Room rows
