@@ -36,6 +36,7 @@ await client.connect();
 // Drop tables if exist
 await client.query("DROP TABLE IF EXISTS Meeting;");
 await client.query("DROP TABLE IF EXISTS Room;");
+await client.query("DROP TABLE IF EXISTS Inviter;");
 await client.query("DROP TABLE IF EXISTS Invitee;");
 
 // Create tables
