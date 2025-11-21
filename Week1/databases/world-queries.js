@@ -52,7 +52,7 @@ console.table(q5.rows);
 // 6-Cities in the Netherlands
 const q6 = await client.query(`
     SELECT Name FROM city 
-    WHERE CountryCode = (SELECT Code FROM country WHERE Name = 'Netherlands');
+    WHERE CountryCode = 'NLD';
 `);
 console.log("6. Cities in the Netherlands:");
 console.table(q6.rows);
@@ -79,15 +79,16 @@ console.table(q9.rows);
 
 // 10- Total population of the world
 const q10 = await client.query(`
-    SELECT SUM(Population) AS world_population FROM country;
+    SELECT SUM(population) AS world_population FROM country;
 `);
 console.log("10. Total world population:", q10.rows[0].world_population);
 
-await client.end();
-console.log("\nAll queries executed successfully.");
-
 } catch (err) {
 console.error("ERROR:", err);
+} finally {
+    
+await client.end();
+console.log("Database connection closed.");
 }
 }
 
