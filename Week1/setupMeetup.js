@@ -47,7 +47,8 @@ CREATE TABLE Inviter (
 CREATE TABLE Invitee (
     invitee_no SERIAL PRIMARY KEY,
     invitee_name VARCHAR(50),
-    invited_by INT REFERENCES Inviter(inviter_id)
+    inviter_id INT,
+    FOREIGN KEY (inviter_id) REFERENCES Inviter(inviter_id)
 );
 `);
 
@@ -65,7 +66,8 @@ CREATE TABLE Meeting (
     meeting_title VARCHAR(100),
     starting_time TIMESTAMP,
     ending_time TIMESTAMP,
-    room_no INT REFERENCES Room(room_no)
+    room_no INT,
+    FOREIGN KEY (room_no) REFERENCES Room(room_no)
 );
 `);
 
