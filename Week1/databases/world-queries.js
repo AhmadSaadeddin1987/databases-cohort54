@@ -86,7 +86,7 @@ console.log("10. Total world population:", q10.rows[0].world_population);
 } catch (err) {
 console.error("ERROR:", err);
 } finally {
-    
+
 await client.end();
 console.log("Database connection closed.");
 }
