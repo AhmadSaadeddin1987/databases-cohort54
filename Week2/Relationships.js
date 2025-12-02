@@ -17,10 +17,12 @@ await client.query(`
 
 await client.query(`
     CREATE TABLE IF NOT EXISTS author_papers (
-    author_id INT REFERENCES authors(author_id),
-    paper_id INT REFERENCES research_papers(paper_id),
-    PRIMARY KEY (author_id, paper_id)
-    );
+    author_id INT,
+    paper_id INT,
+    PRIMARY KEY (author_id, paper_id),
+    FOREIGN KEY (author_id) REFERENCES authors(author_id),
+    FOREIGN KEY (paper_id) REFERENCES research_papers(paper_id)
+);
 `);
 
 
