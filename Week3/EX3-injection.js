@@ -1,4 +1,14 @@
-// Async function to get population of a country by name and code
+const client = require('pg');
+
+const client = new Client({
+host: "localhost",
+user: "hyfuser",
+password: "hyfpass",
+database: "world",
+port: 5432,
+});
+
+client.connect();
 async function getPopulation(countryTable, name, code) {
 const sql = `
 SELECT population
