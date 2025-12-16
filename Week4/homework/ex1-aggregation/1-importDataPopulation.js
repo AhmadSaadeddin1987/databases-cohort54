@@ -20,11 +20,11 @@ fs.createReadStream("./homework/ex1-aggregation/population_pyramid_1950-2022.csv
     .pipe(csv())
     .on("data", (row) => {
     results.push({
-        Country: row.Country,
-        Year: Number(row.Year),
-        Age: row.Age,
-        M: Number(row.M),
-        F: Number(row.F),
+        country: row.Country,
+        year: Number(row.Year),
+        age: row.Age,
+        male: Number(row.M),
+        female: Number(row.F),
     });
     })
     .on("end", async () => {
